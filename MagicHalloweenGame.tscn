@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://dgumak8246g2w"]
+
+[ext_resource type="Script" uid="uid://bivcvoe3id1j4" path="res://player.gd" id="1_45j0c"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_purgm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5lk0t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_5lk0t"]
+size = Vector3(1, 0.9959717, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_y4ls8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_purgm"]
+
+[node name="Node3D" type="Node3D" unique_id=280465640]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1334625478]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" unique_id=342108129]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)
+physics_material_override = SubResource("PhysicsMaterial_purgm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=1733385513]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.5, 0, 0, 0, 0.99999994, 0, 0, 0)
+shape = SubResource("BoxShape3D_5lk0t")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=1580219450]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+mesh = SubResource("BoxMesh_5lk0t")
+
+[node name="Player" type="CharacterBody3D" parent="." unique_id=1490439628]
+script = ExtResource("1_45j0c")
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=301915069]
+transform = Transform3D(1, 0, 0, 0, 0.13543637, 0.9907861, 0, -0.9907861, 0.13543637, 0, 7.724727, 1.6142864)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player" unique_id=1224603953]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4171493, 0)
+mesh = SubResource("CapsuleMesh_y4ls8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=897087180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4171493, 0)
+shape = SubResource("CapsuleShape3D_purgm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Player" unique_id=1441304770]
+transform = Transform3D(1, 0, 0, 0, -0.022076169, 0.9997563, 0, -0.9997563, -0.022076169, 0, 16.413336, 0)
+light_energy = 1.475
